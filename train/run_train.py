@@ -68,10 +68,16 @@ sys.path.append("python")
 
 ## Define dataset
 from datasets.NeuEvDataset import NeuEvDataset as Dataset
+from re import match
 dset = Dataset()
+pattern = config['dataset']['name']
+if not (pattern.startswith('/') and pattern.startswith('/')):
+    if '*' in pattern: pattern = pattern.replace('*', '.*')
+else:
+    pattern = pattern[1:-1]
 for d in config_datasets['datasets']:
-    dname = config['dataset']['name']
-    if d['name'] != dname: continue
+    #if d['name'] != dname: continue
+    if not match(pattern, d['name']): continue
     paths = d['paths']
     for p in paths: dset.addSample(p)
 dset.initialize()
