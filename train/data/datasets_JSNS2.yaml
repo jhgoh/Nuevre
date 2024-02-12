@@ -1,0 +1,73 @@
+datasets:
+  - name: positron_1MeV
+    paths:
+      - /store/cpnr/users/jhgoh/JSNS2/Vertex/20240212_1/positron_1MeV/*.h5
+  - name: positron_2MeV
+    paths:
+      - /store/cpnr/users/jhgoh/JSNS2/Vertex/20240212_1/positron_2MeV/*.h5
+  - name: positron_3MeV
+    paths:
+      - /store/cpnr/users/jhgoh/JSNS2/Vertex/20240212_1/positron_3MeV/*.h5
+  - name: positron_4MeV
+    paths:
+      - /store/cpnr/users/jhgoh/JSNS2/Vertex/20240212_1/positron_4MeV/*.h5
+  - name: positron_5MeV
+    paths:
+      - /store/cpnr/users/jhgoh/JSNS2/Vertex/20240212_1/positron_5MeV/*.h5
+  - name: positron_6MeV
+    paths:
+      - /store/cpnr/users/jhgoh/JSNS2/Vertex/20240212_1/positron_6MeV/*.h5
+  - name: positron_7MeV
+    paths:
+      - /store/cpnr/users/jhgoh/JSNS2/Vertex/20240212_1/positron_7MeV/*.h5
+  - name: positron_8MeV
+    paths:
+      - /store/cpnr/users/jhgoh/JSNS2/Vertex/20240212_1/positron_8MeV/*.h5
+  - name: positron_9MeV
+    paths:
+      - /store/cpnr/users/jhgoh/JSNS2/Vertex/20240212_1/positron_9MeV/*.h5
+  - name: positron_10MeV
+    paths:
+      - /store/cpnr/users/jhgoh/JSNS2/Vertex/20240212_1/positron_10MeV/*.h5
+  - name: positron_20MeV
+    paths:
+      - /store/cpnr/users/jhgoh/JSNS2/Vertex/20240212_1/positron_20MeV/*.h5
+  - name: positron_30MeV
+    paths:
+      - /store/cpnr/users/jhgoh/JSNS2/Vertex/20240212_1/positron_30MeV/*.h5
+  - name: positron_40MeV
+    paths:
+      - /store/cpnr/users/jhgoh/JSNS2/Vertex/20240212_1/positron_40MeV/*.h5
+  - name: positron_50MeV
+    paths:
+      - /store/cpnr/users/jhgoh/JSNS2/Vertex/20240212_1/positron_50MeV/*.h5
+  - name: positron_60MeV
+    paths:
+      - /store/cpnr/users/jhgoh/JSNS2/Vertex/20240212_1/positron_60MeV/*.h5
+  - name: positron_70MeV
+    paths:
+      - /store/cpnr/users/jhgoh/JSNS2/Vertex/20240212_1/positron_70MeV/*.h5
+  - name: positron_80MeV
+    paths:
+      - /store/cpnr/users/jhgoh/JSNS2/Vertex/20240212_1/positron_80MeV/*.h5
+  - name: positron_90MeV
+    paths:
+      - /store/cpnr/users/jhgoh/JSNS2/Vertex/20240212_1/positron_90MeV/*.h5
+  - name: positron_100MeV
+    paths:
+      - /store/cpnr/users/jhgoh/JSNS2/Vertex/20240212_1/positron_100MeV/*.h5
+  - name: positron_110MeV
+    paths:
+      - /store/cpnr/users/jhgoh/JSNS2/Vertex/20240212_1/positron_110MeV/*.h5
+  - name: positron_120MeV
+    paths:
+      - /store/cpnr/users/jhgoh/JSNS2/Vertex/20240212_1/positron_120MeV/*.h5
+  - name: positron_130MeV
+    paths:
+      - /store/cpnr/users/jhgoh/JSNS2/Vertex/20240212_1/positron_130MeV/*.h5
+  - name: positron_140MeV
+    paths:
+      - /store/cpnr/users/jhgoh/JSNS2/Vertex/20240212_1/positron_140MeV/*.h5
+  - name: positron_150MeV
+    paths:
+      - /store/cpnr/users/jhgoh/JSNS2/Vertex/20240212_1/positron_150MeV/*.h5

@@ -1,0 +1,94 @@
+datasets:
+  - name: gamma_KNO_Type3_20cov_1000Mev
+    paths:
+      - /store/cpnr/users/jhgoh/KNO/20240203_1/gamma_KNO_Type3_20cov_1000Mev_iso_evt_2k_fv0.5m_*.h5
+  - name: gamma_KNO_Type3_20cov_100Mev
+    paths:
+      - /store/cpnr/users/jhgoh/KNO/20240203_1/gamma_KNO_Type3_20cov_100Mev_iso_evt_2k_fv0.5m_*.h5
+  - name: gamma_KNO_Type3_20cov_200Mev
+    paths:
+      - /store/cpnr/users/jhgoh/KNO/20240203_1/gamma_KNO_Type3_20cov_200Mev_iso_evt_2k_fv0.5m_*.h5
+  - name: gamma_KNO_Type3_20cov_300Mev
+    paths:
+      - /store/cpnr/users/jhgoh/KNO/20240203_1/gamma_KNO_Type3_20cov_300Mev_iso_evt_2k_fv0.5m_*.h5
+  - name: gamma_KNO_Type3_20cov_400Mev
+    paths:
+      - /store/cpnr/users/jhgoh/KNO/20240203_1/gamma_KNO_Type3_20cov_400Mev_iso_evt_2k_fv0.5m_*.h5
+  - name: gamma_KNO_Type3_20cov_500Mev
+    paths:
+      - /store/cpnr/users/jhgoh/KNO/20240203_1/gamma_KNO_Type3_20cov_500Mev_iso_evt_2k_fv0.5m_*.h5
+  - name: gamma_KNO_Type3_20cov_600Mev
+    paths:
+      - /store/cpnr/users/jhgoh/KNO/20240203_1/gamma_KNO_Type3_20cov_600Mev_iso_evt_2k_fv0.5m_*.h5
+  - name: gamma_KNO_Type3_20cov_700Mev
+    paths:
+      - /store/cpnr/users/jhgoh/KNO/20240203_1/gamma_KNO_Type3_20cov_700Mev_iso_evt_2k_fv0.5m_*.h5
+  - name: gamma_KNO_Type3_20cov_800Mev
+    paths:
+      - /store/cpnr/users/jhgoh/KNO/20240203_1/gamma_KNO_Type3_20cov_800Mev_iso_evt_2k_fv0.5m_*.h5
+  - name: gamma_KNO_Type3_20cov_900Mev
+    paths:
+      - /store/cpnr/users/jhgoh/KNO/20240203_1/gamma_KNO_Type3_20cov_900Mev_iso_evt_2k_fv0.5m_*.h5
+
+  - name: mu_KNO_Type3_20cov_1000Mev
+    paths:
+      - /store/cpnr/users/jhgoh/KNO/20240203_1/mu_KNO_Type3_20cov_1000Mev_iso_evt_2k_fv0.5m_*.h5
+  - name: mu_KNO_Type3_20cov_100Mev
+    paths:
+      - /store/cpnr/users/jhgoh/KNO/20240203_1/mu_KNO_Type3_20cov_100Mev_iso_evt_2k_fv0.5m_*.h5
+  - name: mu_KNO_Type3_20cov_200Mev
+    paths:
+      - /store/cpnr/users/jhgoh/KNO/20240203_1/mu_KNO_Type3_20cov_200Mev_iso_evt_2k_fv0.5m_*.h5
+  - name: mu_KNO_Type3_20cov_300Mev
+    paths:
+      - /store/cpnr/users/jhgoh/KNO/20240203_1/mu_KNO_Type3_20cov_300Mev_iso_evt_2k_fv0.5m_*.h5
+  - name: mu_KNO_Type3_20cov_400Mev
+    paths:
+      - /store/cpnr/users/jhgoh/KNO/20240203_1/mu_KNO_Type3_20cov_400Mev_iso_evt_2k_fv0.5m_*.h5
+  - name: mu_KNO_Type3_20cov_500Mev
+    paths:
+      - /store/cpnr/users/jhgoh/KNO/20240203_1/mu_KNO_Type3_20cov_500Mev_iso_evt_2k_fv0.5m_*.h5
+  - name: mu_KNO_Type3_20cov_600Mev
+    paths:
+      - /store/cpnr/users/jhgoh/KNO/20240203_1/mu_KNO_Type3_20cov_600Mev_iso_evt_2k_fv0.5m_*.h5
+  - name: mu_KNO_Type3_20cov_700Mev
+    paths:
+      - /store/cpnr/users/jhgoh/KNO/20240203_1/mu_KNO_Type3_20cov_700Mev_iso_evt_2k_fv0.5m_*.h5
+  - name: mu_KNO_Type3_20cov_800Mev
+    paths:
+      - /store/cpnr/users/jhgoh/KNO/20240203_1/mu_KNO_Type3_20cov_800Mev_iso_evt_2k_fv0.5m_*.h5
+  - name: mu_KNO_Type3_20cov_900Mev
+    paths:
+      - /store/cpnr/users/jhgoh/KNO/20240203_1/mu_KNO_Type3_20cov_900Mev_iso_evt_2k_fv0.5m_*.h5
+
+  - name: pi0_KNO_Type3_20cov_1000Mev
+    paths:
+      - /store/cpnr/users/jhgoh/KNO/20240203_1/pi0_KNO_Type3_20cov_1000Mev_iso_evt_2k_fv0.5m_*.h5
+  - name: pi0_KNO_Type3_20cov_100Mev
+    paths:
+      - /store/cpnr/users/jhgoh/KNO/20240203_1/pi0_KNO_Type3_20cov_100Mev_iso_evt_2k_fv0.5m_*.h5
+  - name: pi0_KNO_Type3_20cov_200Mev
+    paths:
+      - /store/cpnr/users/jhgoh/KNO/20240203_1/pi0_KNO_Type3_20cov_200Mev_iso_evt_2k_fv0.5m_*.h5
+  - name: pi0_KNO_Type3_20cov_300Mev
+    paths:
+      - /store/cpnr/users/jhgoh/KNO/20240203_1/pi0_KNO_Type3_20cov_300Mev_iso_evt_2k_fv0.5m_*.h5
+  - name: pi0_KNO_Type3_20cov_400Mev
+    paths:
+      - /store/cpnr/users/jhgoh/KNO/20240203_1/pi0_KNO_Type3_20cov_400Mev_iso_evt_2k_fv0.5m_*.h5
+  - name: pi0_KNO_Type3_20cov_500Mev
+    paths:
+      - /store/cpnr/users/jhgoh/KNO/20240203_1/pi0_KNO_Type3_20cov_500Mev_iso_evt_2k_fv0.5m_*.h5
+  - name: pi0_KNO_Type3_20cov_600Mev
+    paths:
+      - /store/cpnr/users/jhgoh/KNO/20240203_1/pi0_KNO_Type3_20cov_600Mev_iso_evt_2k_fv0.5m_*.h5
+  - name: pi0_KNO_Type3_20cov_700Mev
+    paths:
+      - /store/cpnr/users/jhgoh/KNO/20240203_1/pi0_KNO_Type3_20cov_700Mev_iso_evt_2k_fv0.5m_*.h5
+  - name: pi0_KNO_Type3_20cov_800Mev
+    paths:
+      - /store/cpnr/users/jhgoh/KNO/20240203_1/pi0_KNO_Type3_20cov_800Mev_iso_evt_2k_fv0.5m_*.h5
+  - name: pi0_KNO_Type3_20cov_900Mev
+    paths:
+      - /store/cpnr/users/jhgoh/KNO/20240203_1/pi0_KNO_Type3_20cov_900Mev_iso_evt_2k_fv0.5m_*.h5
+
