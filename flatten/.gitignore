@@ -1,0 +1,6 @@
+convert
+*.so
+*.rootmap
+*.pcm
+*.txt
+*.out
