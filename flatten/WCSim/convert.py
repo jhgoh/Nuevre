@@ -53,17 +53,31 @@ print("--------------------")
 out_pmt_x = np.zeros(nPMTs)
 out_pmt_y = np.zeros(nPMTs)
 out_pmt_z = np.zeros(nPMTs)
+
+out_pmt_px = np.zeros(nPMTs)
+out_pmt_py = np.zeros(nPMTs)
+out_pmt_pz = np.zeros(nPMTs)
+
 for iPMT in range(nPMTs):
     pmt = geom.GetPMT(iPMT)
-    pmt_x, pmt_y, pmt_z = [pmt.GetPosition(i) for i in range(3)]
-    out_pmt_x[iPMT] = pmt_x
-    out_pmt_y[iPMT] = pmt_y
-    out_pmt_z[iPMT] = pmt_z
+    out_pmt_x[iPMT] = pmt.GetPosition(0)
+    out_pmt_y[iPMT] = pmt.GetPosition(1)
+    out_pmt_z[iPMT] = pmt.GetPosition(2)
+    out_pmt_px[iPMT] = pmt.GetOrientation(0)
+    out_pmt_py[iPMT] = pmt.GetOrientation(1)
+    out_pmt_pz[iPMT] = pmt.GetOrientation(2)
 
 print("@@@ Start analysing data")
 out_vtx_x = np.zeros(nEvents)
 out_vtx_y = np.zeros(nEvents)
 out_vtx_z = np.zeros(nEvents)
+out_vtx_t = np.zeros(nEvents)
+
+out_vtx_px = np.zeros(nEvents)
+out_vtx_py = np.zeros(nEvents)
+out_vtx_pz = np.zeros(nEvents)
+out_vtx_ke = np.zeros(nEvents)
+
 out_pmt_q = np.zeros((nEvents, nPMTs))
 out_pmt_t = np.zeros((nEvents, nPMTs))
 for iEvent in tqdm(range(nEvents)):
@@ -72,19 +86,22 @@ for iEvent in tqdm(range(nEvents)):
 
     nVtxs = trigger.GetNvtxs()
     if nVtxs < 1: continue
-    vtx_x, vtx_y, vtx_z = [trigger.GetVtx(i) for i in range(3)]
-    out_vtx_x[iEvent] = vtx_x
-    out_vtx_y[iEvent] = vtx_y
-    out_vtx_z[iEvent] = vtx_z
+    out_vtx_x[iEvent] = trigger.GetVtx(0)
+    out_vtx_y[iEvent] = trigger.GetVtx(1)
+    out_vtx_z[iEvent] = trigger.GetVtx(2)
+    out_vtx_t[iEvent] = 0
+
+    out_vtx_px[iEvent] = 0
+    out_vtx_py[iEvent] = 0
+    out_vtx_pz[iEvent] = 0
+    out_vtx_ke[iEvent] = 0
 
     nHitsC = trigger.GetNcherenkovdigihits()
     for iHit in range(nHitsC):
         hit = trigger.GetCherenkovDigiHits().At(iHit)
         iPMT = hit.GetTubeId()-1
-        q = hit.GetQ()
-        t = hit.GetT()
-        out_pmt_q[iEvent, iPMT] = q
-        out_pmt_t[iEvent, iPMT] = t
+        out_pmt_q[iEvent, iPMT] = hit.GetQ()
+        out_pmt_t[iEvent, iPMT] = hit.GetT()
 
 kwargs = {'dtype':'f4', 'compression':'lzf'}
 with h5py.File(fout, 'w', libver='latest') as fout:
@@ -93,10 +110,20 @@ with h5py.File(fout, 'w', libver='latest') as fout:
     gGeom.create_dataset('pmt_y', data=out_pmt_y, **kwargs)
     gGeom.create_dataset('pmt_z', data=out_pmt_z, **kwargs)
 
+    gGeom.create_dataset('pmt_px', data=out_pmt_px, **kwargs)
+    gGeom.create_dataset('pmt_py', data=out_pmt_py, **kwargs)
+    gGeom.create_dataset('pmt_pz', data=out_pmt_pz, **kwargs)
+
     gEvent = fout.create_group('event')
     gEvent.create_dataset('vtx_x', data=out_vtx_x, **kwargs)
     gEvent.create_dataset('vtx_y', data=out_vtx_y, **kwargs)
     gEvent.create_dataset('vtx_z', data=out_vtx_z, **kwargs)
+    gEvent.create_dataset('vtx_t', data=out_vtx_t, **kwargs)
+
+    gEvent.create_dataset('vtx_px', data=out_vtx_px, **kwargs)
+    gEvent.create_dataset('vtx_py', data=out_vtx_py, **kwargs)
+    gEvent.create_dataset('vtx_pz', data=out_vtx_pz, **kwargs)
+    gEvent.create_dataset('vtx_ke', data=out_vtx_ke, **kwargs)
 
     gEvent.create_dataset('pmt_q', data=out_pmt_q, **kwargs)
     gEvent.create_dataset('pmt_t', data=out_pmt_t, **kwargs)
