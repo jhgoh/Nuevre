@@ -1,6 +1,7 @@
 dataset:
     #name: mu_KNO_Type3_20cov_100Mev
     name: /positron_.*/
+    #name: /positron_10MeV/
     split: [0.7, 0.2] ## training set, validation set
 random:
     seed: 12345
@@ -9,7 +10,7 @@ random:
 training:
     epoch: 500
     batch: 32
-    learningRate: 1e-3
+    learningRate: 1e-5
 model:
     name: Basic
         

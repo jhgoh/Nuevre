@@ -52,6 +52,7 @@ with open(os.path.join(args.output, "config.yaml"), 'w') as fout:
 
 ## Setup to run pytorch
 import torch
+import einops
 
 torch.set_num_threads(args.nthread)
 if torch.cuda.is_available() and args.device >= 0:
@@ -95,8 +96,12 @@ trnLoader = DataLoader(trnDset, batch_size=args.batch, shuffle=args.shuffle, **k
 valLoader = DataLoader(valDset, batch_size=args.batch, shuffle=False, **kwargs)
 
 ## Define the model
-from models.BaseModels import *
-model = Classica(pmt_N=dset.shape[0])
+nPMT = dset.shape[0]
+#from models.BaseModels import FCModel as Model
+#model = Model(pmt_N=dset.shape[0])
+from models.PerceiverIO import PerceiverIO
+model = PerceiverIO(d_input=(1+1+3+3), d_latent=128, d_out=3, 
+                    n_head=128, d_head=128, n_attnLayers=5, dropout=0.1)
 
 device = 'cpu'
 if args.device >= 0 and torch.cuda.is_available():
@@ -105,8 +110,8 @@ if args.device >= 0 and torch.cuda.is_available():
 print("Runing on", device, 'cuda_is_available=', torch.cuda.is_available())
 
 ##### Define optimizer instance #####
-#optm = torch.optim.Adam(model.parameters(), lr=args.lr)
-optm = torch.optim.AdamW(model.parameters(), lr=args.lr)
+optm = torch.optim.Adam(model.parameters(), lr=args.lr)
+#optm = torch.optim.AdamW(model.parameters(), lr=args.lr)
 
 ##### Start training #####
 with open(args.output+'/summary.txt', 'w') as fout:
@@ -139,14 +144,24 @@ for epoch in range(nEpoch):
     optm.zero_grad()
 
     for i, (pmt_q, pmt_t, vtx_pos) in enumerate(tqdm(trnLoader, desc='epoch %d/%d' % (epoch+1, nEpoch))):
-        #pmt_t = pmt_t.to(device)
+        batch_size = pmt_q.shape[0]
+
+        pmt_t = pmt_t.to(device)
         #pmt_q = pmt_q.to(device)
         pmtSumQ = pmt_q.sum(dim=1)
         pmt_qFrac = (pmt_q/pmtSumQ.view(-1, 1)).to(device)
         vtx_pos = vtx_pos.to(device)
 
-        pred = model(pmt_q, pmt_t, pmt_pos, pmt_dir, vtx_pos)
-        loss = lossF(pred, pmt_qFrac)
+        pmt_qFrac = pmt_qFrac.view(batch_size, -1, 1)
+        pmt_t = pmt_t.reshape(batch_size, -1, 1)
+        #pmt_poss = pmt_pos.view(1, -1, 3).repeat(batch_size, 1, 1)
+        #pmt_dirs = pmt_dir.view(1, -1, 3).repeat(batch_size, 1, 1)
+        pmt_poss = einops.repeat(pmt_pos, 'n c -> b n c', b=batch_size)
+        pmt_dirs = einops.repeat(pmt_dir, 'n c -> b n c', b=batch_size)
+        
+        x = torch.cat([pmt_qFrac, pmt_t, pmt_poss, pmt_dirs], dim=-1)
+        pred = model(x).view(batch_size, -1)
+        loss = lossF(pred, vtx_pos)
         loss.backward()
         optm.step()
         optm.zero_grad()
@@ -164,14 +179,22 @@ for epoch in range(nEpoch):
     val_loss, val_acc = 0., 0.
     nProcessed = 0
     for i, (pmtQ, pmtT, vtxPos) in enumerate(tqdm(valLoader)):
-        #pmt_t = pmt_t.to(device)
+        pmt_t = pmt_t.to(device)
         #pmt_q = pmt_q.to(device)
         pmtSumQ = pmt_q.sum(dim=1)
         pmt_qFrac = (pmt_q/pmtSumQ.view(-1, 1)).to(device)
         vtx_pos = vtx_pos.to(device)
 
-        pred = model(pmt_q, pmt_t, pmt_pos, pmt_dir, vtx_pos)
-        loss = lossF(pred, pmt_qFrac)
+        pmt_qFrac = pmt_qFrac.view(batch_size, -1, 1)
+        pmt_t = pmt_t.reshape(batch_size, -1, 1)
+        #pmt_poss = pmt_pos.view(1, -1, 3).repeat(batch_size, 1, 1)
+        #pmt_dirs = pmt_dir.view(1, -1, 3).repeat(batch_size, 1, 1)
+        pmt_poss = einops.repeat(pmt_pos, 'n c -> b n c', b=batch_size)
+        pmt_dirs = einops.repeat(pmt_dir, 'n c -> b n c', b=batch_size)
+        
+        x = torch.cat([pmt_qFrac, pmt_t, pmt_poss, pmt_dirs], dim=-1)
+        pred = model(x).view(batch_size, -1)
+        loss = lossF(pred, vtx_pos)
 #        pred = pred.detach().cpu()
 
         ibatch = len(pmt_q)
