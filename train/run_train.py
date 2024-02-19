@@ -100,8 +100,12 @@ nPMT = dset.shape[0]
 #from models.BaseModels import FCModel as Model
 #model = Model(pmt_N=dset.shape[0])
 from models.PerceiverIO import PerceiverIO
-model = PerceiverIO(d_input=(1+1+3+3), d_latent=128, d_out=3, 
-                    n_head=128, d_head=128, n_attnLayers=5, dropout=0.1)
+model = PerceiverIO(d_input=(1+1+3+3), d_out=3,
+                    d_latent=config['model']['dLatent'],
+                    n_head=config['model']['nHead'],
+                    d_head=config['model']['dHead'],
+                    n_attnLayers=config['model']['nLayers'], 
+                    dropout=config['model']['dropout'])
 
 device = 'cpu'
 if args.device >= 0 and torch.cuda.is_available():

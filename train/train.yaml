@@ -12,5 +12,10 @@ training:
     batch: 32
     learningRate: 1e-5
 model:
-    name: Basic
+    name: PerceiverIO
+    dLatent: 128
+    nHead: 128
+    dHead: 128
+    nLayers: 5
+    dropout: 0.1
         
