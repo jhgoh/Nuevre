@@ -84,17 +84,20 @@ for iEvent in tqdm(range(nEvents)):
     eventT.GetEvent(iEvent)
     trigger = event.GetTrigger(0)
 
-    nVtxs = trigger.GetNvtxs()
-    if nVtxs < 1: continue
+    if trigger.GetNvtxs() == 0: continue
+    if trigger.GetNtrack() == 0: continue
+
     out_vtx_x[iEvent] = trigger.GetVtx(0)
     out_vtx_y[iEvent] = trigger.GetVtx(1)
     out_vtx_z[iEvent] = trigger.GetVtx(2)
     out_vtx_t[iEvent] = 0
 
-    out_vtx_px[iEvent] = 0
-    out_vtx_py[iEvent] = 0
-    out_vtx_pz[iEvent] = 0
-    out_vtx_ke[iEvent] = 0
+    firstTrack = trigger.GetTracks()[0]
+
+    out_vtx_px[iEvent] = firstTrack.GetPdir(0)
+    out_vtx_py[iEvent] = firstTrack.GetPdir(1)
+    out_vtx_pz[iEvent] = firstTrack.GetPdir(2)
+    out_vtx_ke[iEvent] = firstTrack.GetE() - firstTrack.GetM()
 
     nHitsC = trigger.GetNcherenkovdigihits()
     for iHit in range(nHitsC):
